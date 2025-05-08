@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
-import Listing from '../components/Listing';
+import Listing from './components/Listing';
 import data from '../data/etsy.json';
 import './index.css';
-import type { Item, EtsyItem } from '../components/Item';
+import type { Item, EtsyItem } from './components/Item';
 
 
 const App = () => {
