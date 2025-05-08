@@ -4,89 +4,48 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html, body {
-    @apply h-full w-full;
-  }
-  body {
-    @apply bg-gray-200 text-gray-800 font-work-sans;
-    line-height: 1.4;
-  }
-  *,
-  ::before,
-  ::after {
-    @apply box-border;
-  }
-  :focus {
-    @apply outline-none;
-  }
+/* Кастомные стили */
+.item-list {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4;
 }
 
-@layer components {
-  .wrapper {
-    @apply mx-auto py-4;
-    width: calc(100% - 5rem);
-  }
+.item {
+  @apply bg-white rounded-sm shadow-md p-4 relative break-inside-avoid;
+}
 
-  .item-list {
-    @apply columns-1 gap-4 mt-4 mx-auto;
-    opacity: 1;
-    transition: opacity 300ms ease;
-  }
-  @screen sm {
-    .item-list {
-      @apply columns-2;
-    }
-  }
-  @screen md {
-    .item-list {
-      @apply columns-3;
-    }
-  }
-  @screen lg {
-    .item-list {
-      @apply columns-4;
-    }
-  }
-  @screen xl {
-    .item-list {
-      @apply columns-5;
-    }
-  }
+.item-image {
+  @apply bg-gray-200 rounded-sm overflow-hidden;
+}
 
-  .item {
-    @apply bg-white rounded-sm shadow-md p-4 mb-4 inline-block w-full relative;
-    break-inside: avoid;
-  }
+.item-image img {
+  @apply w-full h-auto object-cover transition-opacity duration-300;
+}
 
-  .item-image {
-    @apply bg-gray-200;
-  }
-  .item-image__img {
-    @apply rounded-sm block w-full h-auto;
-    transition: opacity 1200ms ease;
-  }
+.item-title {
+  @apply text-sm my-2 mx-1 break-words;
+}
 
-  .item-title {
-    @apply text-sm my-2 mx-1 break-words;
-  }
+.item-price {
+  @apply text-[#3c763d] text-lg font-semibold my-2 mx-1;
+}
 
-  .item-price {
-    @apply text-green-700 inline-block text-lg font-semibold my-2 mx-1;
-    line-height: 1;
-  }
+.item-quantity {
+  @apply absolute bottom-4 right-4 text-xs font-semibold px-2 py-1 rounded-sm text-white;
+}
 
-  .item-quantity {
-    @apply text-white text-xs font-semibold py-1 px-2 rounded-sm absolute right-4 bottom-4;
-  }
+.level-low {
+  @apply bg-[#a94442];
+}
 
-  .level-low {
-    @apply bg-red-600;
-  }
-  .level-medium {
-    @apply bg-yellow-600;
-  }
-  .level-high {
-    @apply bg-green-700;
-  }
+.level-medium {
+  @apply bg-[#8a6d3b];
+}
+
+.level-high {
+  @apply bg-[#3c763d];
+}
+
+body {
+  background: #e9e9e9;
+  font-family: 'Work Sans', sans-serif;
 }

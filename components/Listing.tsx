@@ -20,16 +20,12 @@ const Listing: React.FC<{ items: Item[] }> = ({ items = [] }) => {
         <div className="item" key={item.listing_id}>
           <div className="item-image">
             <a href={item.url}>
-              <img 
-                src={item.MainImage.url_570xN} 
-                alt={item.title} 
-                className="item-image__img"
-              />
+              <img src={item.MainImage.url_570xN} alt={item.title} />
             </a>
           </div>
           <div className="item-details">
             <p className="item-title">
-              {item.title.length > 50 ? `${item.title.substring(0, 50)}...` : item.title}
+              {item.title.length > 50 ? `${item.title.slice(0, 50)}...` : item.title}
             </p>
             <p className="item-price">
               {formatPrice(item.currency_code, item.price)}
