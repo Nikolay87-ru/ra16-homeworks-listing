@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Listing from '../components/Listing';
 import data from '../data/etsy.json';
@@ -26,5 +25,7 @@ const App = () => {
     </div>
   );
 };
+
+export default App;
 
 createRoot(document.getElementById('root')!).render(<App />);
