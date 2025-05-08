@@ -1,24 +1,25 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import type { Item } from '../components/Item';
-import './index.css';
 import Listing from '../components/Listing';
 import data from '../data/etsy.json';
+import './index.css';
+import type { Item, EtsyItem } from '../components/Item';
+
 
 const App = () => {
-  const items = data.filter(
-    (item) =>
-      item.listing_id &&
-      item.url &&
-      item.MainImage?.url_570xN &&
-      item.title &&
-      item.currency_code &&
-      item.price &&
-      item.quantity !== undefined,
-  ) as Item[];
+  const items = (data as EtsyItem[])
+    .filter((item): item is Item => (
+      typeof item.listing_id === 'number' &&
+      typeof item.url === 'string' &&
+      typeof item.MainImage?.url_570xN === 'string' &&
+      typeof item.title === 'string' &&
+      typeof item.currency_code === 'string' &&
+      typeof item.price === 'string' &&
+      typeof item.quantity === 'number'
+    ));
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-full bg-gray-200 text-gray-800 font-work-sans">
       <div className="wrapper">
         <Listing items={items} />
       </div>

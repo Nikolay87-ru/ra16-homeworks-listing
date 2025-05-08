@@ -7,3 +7,7 @@ export type Item = {
   price: string;
   quantity: number;
 };
+
+export type EtsyItem = Partial<Item> & {
+  [key: string]: unknown; 
+};
