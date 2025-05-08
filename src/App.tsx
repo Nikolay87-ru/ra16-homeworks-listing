@@ -18,8 +18,8 @@ const App = () => {
   ) as Item[];
 
   return (
-    <div className="min-h-full bg-gray-200 text-gray-800 font-sans">
-      <div className="wrapper mx-auto py-4 w-[calc(100%-5rem)]">
+    <div className="min-h-screen">
+      <div className="wrapper">
         <Listing items={items} />
       </div>
     </div>

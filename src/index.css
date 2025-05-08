@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-gray-100 text-gray-800 font-sans;
+}
+
+.wrapper {
+  @apply mx-auto py-4 w-[calc(100%-5rem)];
+}
+
+.item-list {
+  @apply opacity-100 transition-opacity duration-300;
+}
+
+.item-image img {
+  @apply transition-opacity duration-[1200ms];
+}
+
+.level-low { @apply bg-red-600 text-white; }
+.level-medium { @apply bg-yellow-700 text-white; }
+.level-high { @apply bg-green-700 text-white; }
