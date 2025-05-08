@@ -1,40 +1,41 @@
 import React from 'react';
+import type { Item } from './Item';
 
-type ListingProps = {
-  listing_id: number;
-  url: string;
-  MainImage: string;
-  title: string;
-  currency_code: string;
-  price: string;
-  quantity: number;
-};
+const Listing: React.FC<{ items: Item[] }> = ({ items = [] }) => {
+  const formatPrice = (currency: string, price: string) => {
+    if (currency === 'USD') return `$${price}`;
+    if (currency === 'EUR') return `€${price}`;
+    if (currency) return `${price} ${currency}`;
+  };
 
-const Listing: React.FC< {items: ListingProps[]} > = ({ items }) => {
-  if (items.title.lenght < 50 ) {
-    const title50 = `${items.title.substring(0, 50)...}`;
-    return title50;
-  }
+  const getQuantityLevel = (quantity: number) => {
+    if (quantity <= 10) return 'level-low';
+    if (quantity <= 20) return 'level-medium';
+    return 'level-high';
+  };
 
   return (
-    {items.map((item, index) => (
     <div className="item-list">
-      <div className="item"  key={index}>
-        <div className="item-image">
-          <a href="https://www.etsy.com/listing/292754135/woodland-fairy">
-            <img src={item.url} alt={item.title} className="w-full h-full object-cover" />
-          </a>
+      {items.map((item) => (
+        <div className="item" key={item.listing_id}>
+          <div className="item-image">
+            <a href={item.url}>
+              <img src={item.MainImage.url_570xN} alt={item.title} />
+            </a>
+          </div>
+          <div className="item-details">
+            <p className="item-title">
+              {item.title.length > 50 ? `${item.title.substring(0, 50)}...` : item.title}
+            </p>
+            <p className="item-price">{formatPrice(item.currency_code, item.price)}</p>
+            <p className={`item-quantity ${getQuantityLevel(item.quantity)}`}>
+              {item.quantity} left
+            </p>
+          </div>
         </div>
-        <div className="item-details">
-          <p className="item-title">{title50}</p>
-          <p className="item-price">$3.99</p>
-          <p className="item-quantity level-medium">12 left</p>
-        </div>
-      </div>
+      ))}
     </div>
-     ))}
   );
-  
 };
 
-export defoult Listing;
+export default Listing;
